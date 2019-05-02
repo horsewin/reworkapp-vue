@@ -16,15 +16,15 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/auth',
       name: 'auth',
-      component: components.Authenticator
-    }
-  ]
-})
+      component: components.Authenticator,
+    },
+  ],
+});
 
 let user;
 
@@ -41,35 +41,35 @@ const getUser = () => {
 };
 
 AmplifyEventBus.$on('authState', async (state: string) => {
-  if (state === 'signedOut'){
+  if (state === 'signedOut') {
     user = null;
     AmplifyStore.commit('setUser', null);
-    router.push({path: '/auth'})
+    router.push({path: '/auth'});
   } else if (state === 'signedIn') {
     user = await getUser();
-    router.push({path: '/'})
+    router.push({path: '/'});
   }
 });
 
-getUser().then((user: any) => {
-  if (user) {
+getUser().then((userInfo: any) => {
+  if (userInfo) {
     router.push({path: '/'});
   }
 });
 
 router.beforeResolve(async (to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     user = await getUser();
     if (!user) {
       return next({
         path: '/auth',
         query: {
           redirect: to.fullPath,
-        }
+        },
       });
     }
-    return next()
+    return next();
   }
-  return next()
-})
+  return next();
+});
 
