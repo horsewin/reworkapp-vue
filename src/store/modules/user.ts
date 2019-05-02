@@ -3,14 +3,18 @@ const state = {
 };
 
 const mutations = {
-  // @ts-ignore
   // tslint:disable-next-line:no-shadowed-variable
-  setUser(state: any, {user}) {
+  setUser(state: any, user: any) {
     state.user = user;
   },
 };
 
-const actions = {};
+const actions = {
+// @ts-ignore
+  setUser({commit}, user: any) {
+    commit("setUser", user);
+  },
+};
 
 export default {
   state,

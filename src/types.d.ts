@@ -1,1 +1,1 @@
-declare module '@aws-amplify/ui'; // amplify hack :(
+declare module "@aws-amplify/ui"; // amplify hack :(
