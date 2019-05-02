@@ -1,0 +1,5 @@
+{
+    "tableName": "rework",
+    "partitionKeyName": "user_id",
+    "partitionKeyType": "S"
+}

@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "rework-20190502151024-authRole",
+            "UnauthRoleArn": "arn:aws:iam::630135257388:role/rework-20190502151024-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::630135257388:role/rework-20190502151024-authRole",
+            "Region": "ap-northeast-1",
+            "DeploymentBucketName": "rework-20190502151024-deployment",
+            "UnauthRoleName": "rework-20190502151024-unauthRole",
+            "StackName": "rework-20190502151024",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:630135257388:stack/rework-20190502151024/f99af500-6ca0-11e9-a8f1-0a56b21e2412"
+        },
+        "categories": {
+            "auth": {
+                "cognitocbf634b0": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "rework",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognitocbf634b0",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
