@@ -1,6 +1,6 @@
 {
-  "name": "vue-cli-pwa",
-  "short_name": "vue-cli-pwa",
+  "name": "rework",
+  "short_name": "rework",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
