@@ -17,18 +17,18 @@ const router = new Router({
     {
       path: "/",
       name: "home",
+      component: Home,
       meta: {
         requiresAuth: true,
       },
-      component: Home,
     },
     {
       path: "/about",
       name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => About,
+      component: About,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: "/auth",
@@ -70,6 +70,15 @@ getUser().then((userInfo: any) => {
 });
 
 router.beforeResolve(async (to, from, next) => {
+  if (to.path === "/index.html") {
+    return next({
+      path: "/",
+      query: {
+        redirect: to.fullPath,
+      },
+    });
+  }
+
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     user = await getUser();
     if (!user) {
