@@ -1,7 +1,9 @@
 <template>
-  <button class="primary" @click="onClick">
-    <slot></slot>
-  </button>
+  <v-container>
+    <v-btn large color="primary" @click="onClick">
+      <slot></slot>
+    </v-btn>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -24,7 +26,3 @@
     }
   }
 </script>
-
-<style>
-
-</style>

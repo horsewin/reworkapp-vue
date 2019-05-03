@@ -8,6 +8,7 @@
       "node_modules/**"
     ]
   },
+
   "rules": {
     "no-console": false,
     "quotemark": [true, "double"],

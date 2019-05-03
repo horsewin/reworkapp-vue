@@ -26,9 +26,9 @@
       RetaskButton,
     },
   })
-  export default class Home extends Vue {
-    private count: number = 0;
+  export default class ToDo extends Vue {
     public greetText: string = "Hello";
+    private count: number = 0;
 
     public get isRegulars(): boolean {
       return this.count >= 5;
