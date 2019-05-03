@@ -6,6 +6,7 @@ import {AmplifyEventBus, AmplifyPlugin, components} from "aws-amplify-vue";
 import * as AmplifyModules from "aws-amplify";
 import Home from "@/views/Home.vue";
 import About from "@/views/About.vue";
+import Todo from "@/views/Todo.vue";
 
 Vue.use(Router);
 Vue.use(AmplifyPlugin, AmplifyModules);
@@ -26,6 +27,14 @@ const router = new Router({
       path: "/about",
       name: "about",
       component: About,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/todo",
+      name: "Todo",
+      component: Todo,
       meta: {
         requiresAuth: true,
       },
