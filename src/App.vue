@@ -18,6 +18,9 @@
       user() {
         return store.state.user;
       },
+      getHeight() {
+        return window.innerHeight;
+      },
     },
   })
   export default class App extends Vue {

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <v-container class="home">
     <p>{{greetText}}</p>
     <p>{{count}}</p>
     <p v-if="isRegulars">すごい！</p>
@@ -12,7 +12,7 @@
 <!--      </div>-->
 <!--      <i>{{ myTodo }}</i>-->
 <!--    </div>-->
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">
