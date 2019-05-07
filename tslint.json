@@ -14,8 +14,25 @@
     "quotemark": [true, "double"],
     "indent": [true, "spaces", 2],
     "interface-name": false,
-    "ordered-imports": false,
     "object-literal-sort-keys": false,
-    "no-consecutive-blank-lines": false
+    "no-consecutive-blank-lines": false,
+    "curly": true,
+    "eofline": true,
+    "newline-before-return": true,
+    "no-boolean-literal-compare": true,
+    "no-empty": true,
+    "no-trailing-whitespace": true,
+    "no-var-keyword": true,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-first",
+        "named-imports-order": "lowercase-first"
+      }
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ]
   }
 }

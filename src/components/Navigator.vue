@@ -40,44 +40,44 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import Home from "@/views/Home.vue";
-  import About from "@/views/About.vue";
-  import Todo from "@/views/Todo.vue";
-  import router from "@/router";
-  import store from "@/store/index";
+import router from "@/router";
+import store from "@/store/index";
+import About from "@/views/About.vue";
+import Home from "@/views/Home.vue";
+import Todo from "@/views/Todo.vue";
+import {Component, Prop, Vue} from "vue-property-decorator";
 
-  @Component({
-    components: {
-      Home,
-      About,
-      Todo,
+@Component({
+  components: {
+    Home,
+    About,
+    Todo,
+  },
+  computed: {
+    user() {
+      return store.state.user;
     },
-    computed: {
-      user() {
-        return store.state.user;
-      },
-      getHeight() {
-        return window.innerHeight;
-      },
+    getHeight() {
+      return window.innerHeight;
     },
-  })
-  export default class Navigator extends Vue {
-    public bottomNav: string = "home";
+  },
+})
+export default class Navigator extends Vue {
+  public bottomNav: string = "home";
 
-    public update(val: string) {
-      switch (val) {
-        case "home":
-          router.push({path: "/"});
-          break;
-        case "about":
-          router.push({path: "/about"});
-          break;
-        case "todo":
-          router.push({path: "/todo"});
-          break;
-        default:
-      }
+  public update(val: string) {
+    switch (val) {
+      case "home":
+        router.push({path: "/"});
+        break;
+      case "about":
+        router.push({path: "/about"});
+        break;
+      case "todo":
+        router.push({path: "/todo"});
+        break;
+      default:
     }
   }
+}
 </script>

@@ -6,24 +6,24 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from "vue-property-decorator";
-  import store from "../store/index";
-  import HelloWorld from "@/components/HelloWorld.vue";
-  import Navigator from "@/components/Navigator.vue";
+import HelloWorld from "@/components/HelloWorld.vue";
+import Navigator from "@/components/Navigator.vue";
+import {Component, Vue} from "vue-property-decorator";
+import store from "../store/index";
 
-  @Component({
-    components: {
-      HelloWorld,
-      Navigator,
+@Component({
+  components: {
+    HelloWorld,
+    Navigator,
+  },
+  computed: {
+    user() {
+      return store.state.user;
     },
-    computed: {
-      user() {
-        return store.state.user;
-      },
-    },
-  })
+  },
+})
 
-  export default class Home extends Vue {
-  }
+export default class Home extends Vue {
+}
 </script>
 

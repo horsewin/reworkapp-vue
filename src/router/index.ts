@@ -1,12 +1,12 @@
+import About from "@/views/About.vue";
+import Home from "@/views/Home.vue";
+import Todo from "@/views/Todo.vue";
+import * as AmplifyModules from "aws-amplify";
+// @ts-ignore
+import {components, AmplifyEventBus, AmplifyPlugin} from "aws-amplify-vue";
 import Vue from "vue";
 import Router from "vue-router";
 import AmplifyStore from "../store/index";
-// @ts-ignore
-import {AmplifyEventBus, AmplifyPlugin, components} from "aws-amplify-vue";
-import * as AmplifyModules from "aws-amplify";
-import Home from "@/views/Home.vue";
-import About from "@/views/About.vue";
-import Todo from "@/views/Todo.vue";
 
 Vue.use(Router);
 Vue.use(AmplifyPlugin, AmplifyModules);
@@ -53,10 +53,12 @@ const getUser = async () => {
   return Vue.prototype.$Amplify.Auth.currentAuthenticatedUser().then((data: { signInUserSession: any; }) => {
     if (data && data.signInUserSession) {
       AmplifyStore.commit("setUser", data);
+
       return data;
     }
   }).catch(() => {
     AmplifyStore.dispatch("setUser", null);
+
     return null;
   });
 };
@@ -98,8 +100,10 @@ router.beforeResolve(async (to, from, next) => {
         },
       });
     }
+
     return next();
   }
+
   return next();
 });
 

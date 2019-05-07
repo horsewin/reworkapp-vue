@@ -1,11 +1,11 @@
+import Amplify from "aws-amplify";
 import Vue from "vue";
+import aws_exports from "./aws-exports";
 import "./plugins/vuetify";
-import App from "./App.vue";
+import "./registerServiceWorker";
 import router from "./router/index";
 import store from "./store/index";
-import "./registerServiceWorker";
-import Amplify from "aws-amplify";
-import aws_exports from "./aws-exports";
+import App from "./App.vue";
 
 Vue.config.productionTip = false;
 Amplify.configure(aws_exports);

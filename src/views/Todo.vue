@@ -2,7 +2,7 @@
   <v-container class="home">
     <p>{{greetText}}</p>
     <p>{{count}}</p>
-    <p v-if="isRegulars">すごい！</p>
+<!--    <p v-if="isRegulars">すごい！</p>-->
     <RetaskButton :greet="greetText" @clicked="onButtonClicked">
       ToDo生成
     </RetaskButton>

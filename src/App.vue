@@ -6,27 +6,26 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from "vue-property-decorator";
-  import Navigator from "@/components/Navigator.vue";
-  import store from "./store/index";
+import Navigator from "@/components/Navigator.vue";
+import {Component, Vue} from "vue-property-decorator";
+import store from "./store/index";
 
-  @Component({
-    components: {
-      Navigator,
+@Component({
+  components: {
+    Navigator,
+  },
+  computed: {
+    user() {
+      return store.state.user;
     },
-    computed: {
-      user() {
-        return store.state.user;
-      },
-      getHeight() {
-        return window.innerHeight;
-      },
+    getHeight() {
+      return window.innerHeight;
     },
-  })
-  export default class App extends Vue {
+  },
+})
+export default class App extends Vue {
 
-  }
-
+}
 </script>
 
 <style>
