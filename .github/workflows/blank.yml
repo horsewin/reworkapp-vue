@@ -13,7 +13,7 @@ jobs:
     - name: Run a multi-line script
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PR: ${{ github.event.pull_request }}
+        PR: ${{ toJson(github.event) }}
       run: |
         echo ${PR}
         echo Add other actions to build,
