@@ -1,7 +1,7 @@
 name: Bump version
 on: 
-  pull_request:
-    types: [closed]
+  push:
+#     types: [closed]
     branches:
       - master
 
@@ -9,7 +9,7 @@ jobs:
   release-on-push:
     runs-on: ubuntu-latest
     steps:
-      - name: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: tag
         run: |
           git tag v0.4.0
