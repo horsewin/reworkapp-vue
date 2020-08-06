@@ -13,6 +13,7 @@ jobs:
       - name: tag
         run: |
           git tag v0.4.0
+          git push origin v0.4.0
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
