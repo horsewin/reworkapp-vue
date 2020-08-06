@@ -9,22 +9,14 @@ jobs:
   release-on-push:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      TAG: ${{ toJson(github.event.pull_request.title) }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: tag
-        run: |
-          echo ${TITLE}
-          git tag ${TITLE} 
-          git push origin ${TITLE}
       - name: Create release
         id: create_release
         uses: actions/create-release@v1.0.0
-        env:
-          BODY: ${{ toJson(github.event.pull_request.body) }} 
         with:
-          tag_name: ${TAG}
-          release_name: Release ${TAG}
+          tag_name: ${{ toJson(github.event.pull_request.title) }}
+          release_name: Release ${{ toJson(github.event.pull_request.title) }}
+          body: ${{ toJson(github.event.pull_request.body) }} 
           draft: false
-          prerelease: false
+          prerelease: true
