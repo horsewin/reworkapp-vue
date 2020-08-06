@@ -2,5 +2,3 @@
 
 - hoghoge
 - aaaa
-- e
-- e
