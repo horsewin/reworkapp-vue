@@ -2,7 +2,7 @@
 
 name: CI
 on:
-  push:
+  pull_request:
     branches: [ master ]
 
 jobs:
@@ -12,24 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run a multi-line script
+    - name: grep
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        echo ${REF},
-        echo Add other actions to build,
-        echo test, and deploy your project.
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      with:
-        tag_name: v0.0.1-beta
-        release_name: Release ${{ REF }}
-        body: |
-          Changes in this Release
-          - First Change
-          - Second Change
-        draft: false
-        prerelease: false
+        TITLE: ${{ github.event.pull_request.title }}
+      run: echo ${TITLE} | egrep "v[0-9]*\.[0-9]*\.[0-9]*" 
+#     - name: Run failure script
+#       if: failure()
+#       run: exit 1
+#     - name: Run success script
+#       if: success()
+#       run: exit 0
