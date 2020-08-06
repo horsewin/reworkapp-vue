@@ -1,21 +1,22 @@
 name: Bump version
-on:
+on: 
   pull_request:
     types: [closed]
     branches:
       - master
+
 jobs:
-  build:
+  release-on-push:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@master
+      - id: release
+        uses: rymndhng/release-on-push-action@master
         with:
-          # Fetches entire history, so we can analyze commits since last tag
-          fetch-depth: 0
-      - name: Bump version and push tag
-        uses: mathieudutour/github-tag-action@v4.5
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: minor
-          tag_prefix: v
-          release_branches: master
+          bump_version_scheme: minor
+          
+      - name: Check Output Parameters
+        run: |
+          echo "Got tag name ${{ steps.release.outputs.tag_name }}"
+          echo "Got release version ${{ steps.release.outputs.version }}"
