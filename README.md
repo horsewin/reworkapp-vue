@@ -1,5 +1,6 @@
 # rework application for vue.js
 
-hoghoge
-aaaa
+- hoghoge
+- aaaa
+- e
 e
