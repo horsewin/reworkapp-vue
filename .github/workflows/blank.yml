@@ -2,19 +2,34 @@
 
 name: CI
 on:
-  pull_request:
+  push:
     branches: [ master ]
 
 jobs:
   build:
+    env:
+      REF: ${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Run a multi-line script
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PR: ${{ toJson(github.event) }}
       run: |
-        echo ${PR},
+        echo ${REF},
         echo Add other actions to build,
         echo test, and deploy your project.
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: v0.0.1-beta
+        release_name: Release ${{ REF }}
+        body: |
+          Changes in this Release
+          - First Change
+          - Second Change
+        draft: false
+        prerelease: false
