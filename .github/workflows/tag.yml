@@ -1,20 +1,30 @@
 name: Bump version
 on: 
-  push:
-#     types: [closed]
+  pull_request:
+    types: [closed]
     branches:
       - master
 
 jobs:
   release-on-push:
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TAG: ${{ toJson(github.event.pull_request.title) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: tag
         run: |
-          git tag v0.4.0
-          git push origin v0.4.0
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+          echo ${TITLE}
+          git tag ${TITLE} 
+          git push origin ${TITLE}
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          BODY: ${{ toJson(github.event.pull_request.body) }} 
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${TAG}
+          release_name: Release ${TAG}
+          draft: false
+          prerelease: false
